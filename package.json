@@ -1,0 +1,28 @@
+{
+	"name": "shopper-server",
+	"version": "1.0.0",
+	"description": "Shopper landing server",
+	"main": "src/main.js",
+	"scripts": {
+		"start": "node src/main.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ivankprod/mxm-shopper-server.git"
+	},
+	"author": "ivankprod",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ivankprod/mxm-shopper-server/issues"
+	},
+	"homepage": "https://github.com/ivankprod/mxm-shopper-server",
+	"type": "module",
+	"imports": {
+		"#core/*": "./src/*"
+	},
+	"dependencies": {
+		"body-parser": "^1.20.2",
+		"cors": "^2.8.5",
+		"express": "^4.19.2"
+	}
+}

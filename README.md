@@ -1,1 +1,0 @@
-# mxm-delote-beauty-server
