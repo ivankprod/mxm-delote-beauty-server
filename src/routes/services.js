@@ -1,37 +1,35 @@
-//import os from "os";
 import fs from "fs";
 import express from "express";
 
 export const routeServices = express.Router();
 
-routeServices.get("/get", (_, res) => {
+routeServices.get("/get", (req, res) => {
 	try {
-		const services = JSON.parse(fs.readFileSync("./src/store/services.json"));
+		const paramPage = parseInt(req.query.page);
+		const paramServicesPerPage = parseInt(req.query.per_page);
 
-		return res.json(services);
+		let services = JSON.parse(fs.readFileSync("./src/store/services.json"));
+		const servicesCount = services.length;
+
+		if (paramPage > 0) {
+			if (paramPage > Math.floor(services.length / paramPage)) {
+				return res.status(400).send("Неверный запрос");
+			}
+
+			services = services.slice(
+				(paramPage - 1) * paramServicesPerPage,
+				(paramPage - 1) * paramServicesPerPage + paramServicesPerPage
+			);
+		}
+
+		return res.json({
+			data: services,
+			dataPage: paramPage,
+			dataCount: servicesCount
+		});
 	} catch (e) {
 		return res.status(500).send("Ошибка сервера: " + e);
 	}
 });
-
-/*routeServices.post("/add", (req, res) => {
-	const data = req.body;
-
-	if (!data) return res.status(400).send("Неверный запрос");
-
-	try {
-		const curCart = JSON.parse(fs.readFileSync("./src/store/cart.json"));
-		const finalCart = [...curCart, data];
-
-		fs.writeFileSync(
-			"./src/store/services.json",
-			JSON.stringify(finalCart, null, "	").replace(/\n/, os.EOL)
-		);
-
-		return res.send("Сервис успешно добавлен");
-	} catch (e) {
-		return res.status(500).send("Ошибка сервера: " + e);
-	}
-});*/
 
 export default routeServices;

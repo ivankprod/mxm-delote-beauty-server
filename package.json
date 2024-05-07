@@ -1,21 +1,21 @@
 {
-	"name": "shopper-server",
+	"name": "delote-beauty-server",
 	"version": "1.0.0",
-	"description": "Shopper landing server",
+	"description": "Delote Beauty server",
 	"main": "src/main.js",
 	"scripts": {
 		"start": "node src/main.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ivankprod/mxm-shopper-server.git"
+		"url": "git+https://github.com/ivankprod/mxm-delote-beauty-server.git"
 	},
 	"author": "ivankprod",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/ivankprod/mxm-shopper-server/issues"
+		"url": "https://github.com/ivankprod/mxm-delote-beauty-server/issues"
 	},
-	"homepage": "https://github.com/ivankprod/mxm-shopper-server",
+	"homepage": "https://github.com/ivankprod/mxm-delote-beauty-server",
 	"type": "module",
 	"imports": {
 		"#core/*": "./src/*"
